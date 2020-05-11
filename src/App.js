@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Product from '../../das2/src/components/Product'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class  App extends React.Component {
+  constructor(){
+    super()
+    this.state={
+      products:[
+        {id:215,name:"Banan",price:500},
+        {id:123,name:"Apple",price:400},
+        {id:232,name:"Kiwi",price:800},
+      ]
+    }
+  }
+  add(x){
+    console.log(x)
+  }
+  render(){
+    return (
+      <div>
+      {
+        // <h1>barev</h1>
+        // <Product anun={this.state.name} azganun={"Sargsyan"} />        
+        this.state.products.map((a,i)=>{
+          return(
+            <Product key={a.id} obj={a} index={i} addCart={this.add.bind(this)} />
+          )
+        })
+      }
+      </div>
+    );
+  }
+
 }
-
 export default App;
